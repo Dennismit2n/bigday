@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>bigday — countdown to your big day</title>
+  <meta name="description" content="A pretty countdown to vacation, birthday, retirement — shareable as a link. Everything lives in the URL: no server, no account. / Hübscher Countdown zum Teilen — alles steckt im Link.">
+  <link rel="canonical" href="https://dennismit2n.github.io/bigday/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="bigday — countdown to your big day">
+  <meta property="og:description" content="Create a pretty, shareable countdown in seconds. 9 moods, 9 languages, no account — the whole countdown lives in the link.">
+  <meta property="og:url" content="https://dennismit2n.github.io/bigday/">
+  <meta property="og:image" content="https://dennismit2n.github.io/bigday/assets/promo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0a2540" id="themeColorMeta">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Analytics: GoatCounter (anonymous, cookieless — disclosed in the footer).
+       count.js is vendored locally; the only external request is the count pixel.
+       Countdown data lives in the #hash, which is never sent to any server.
+       The title is pinned to a static value so the personalized document.title
+       (the user's event name) never reaches the count pixel. -->
+  <script data-goatcounter="https://dennis-mit-2n.goatcounter.com/count" data-goatcounter-settings='{"title": "bigday"}' async src="./js/vendor/count.js"></script>
+</head>
+<body data-theme="wanderlust" data-mode="edit">
+
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="brandBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0a2540"/>
+            <stop offset="0.6" stop-color="#0e5a8a"/>
+            <stop offset="1" stop-color="#14b8a6"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#brandBg)"/>
+        <circle cx="24" cy="27" r="7.5" fill="#ffd166"/>
+        <path d="M7 31.5c5.5-3.2 11.5-3.2 17 0s11.5 3.2 17 0" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M11 37.5c4.3-2.4 9-2.4 13 0s8.7 2.4 13 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity="0.75"/>
+        <path d="M34.5 9l1.5 3.4 3.4 1.5-3.4 1.5-1.5 3.4-1.5-3.4-3.4-1.5 3.4-1.5z" fill="#fff"/>
+      </svg>
+      <div>
+        <h1>bigday</h1>
+        <p class="tagline" data-i18n="tagline">A pretty countdown to your big day — shareable as a link.</p>
+      </div>
+    </div>
+    <label class="lang-wrap">
+      <span class="visually-hidden" data-i18n="langLabel">Language</span>
+      <select id="langSelect" data-i18n-aria="langLabel"></select>
+    </label>
+  </header>
+
+  <main>
+    <section class="stage" id="stage" aria-labelledby="eventTitle">
+      <div class="stage-inner">
+        <p class="event-date" id="eventDate"></p>
+        <h2 class="event-title" id="eventTitle"></h2>
+        <p class="celebrate-msg" id="celebrateMsg" hidden><span data-i18n="itsTime">It's time!</span> 🎉</p>
+        <div class="ticker" id="ticker" role="timer" aria-live="off">
+          <div class="unit" id="unitYears" hidden>
+            <span class="num" id="numYears">0</span>
+            <span class="lbl" id="lblYears">years</span>
+          </div>
+          <div class="unit">
+            <span class="num" id="numDays">–</span>
+            <span class="lbl" id="lblDays">days</span>
+          </div>
+          <div class="unit">
+            <span class="num" id="numHours">–</span>
+            <span class="lbl" id="lblHours">hours</span>
+          </div>
+          <div class="unit">
+            <span class="num" id="numMinutes">–</span>
+            <span class="lbl" id="lblMinutes">minutes</span>
+          </div>
+          <div class="unit">
+            <span class="num" id="numSeconds">–</span>
+            <span class="lbl" id="lblSeconds">seconds</span>
+          </div>
+        </div>
+        <p class="since-note" id="sinceNote" hidden data-i18n="sinceLabel">since the big day</p>
+        <button type="button" class="cta" id="btnMakeOwn" hidden>
+          <span aria-hidden="true">✨</span> <span data-i18n="ctaCreate">Create your own countdown</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="editor panel" id="editor" aria-labelledby="editorHeading">
+      <h2 id="editorHeading" data-i18n="editHeading">Your countdown</h2>
+      <form id="form" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="titleInput" data-i18n="titleLabel">Title</label>
+          <input id="titleInput" type="text" maxlength="80" data-i18n-ph="titlePlaceholder" autocapitalize="sentences" spellcheck="false">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="dateInput" data-i18n="dateLabel">Date</label>
+            <input id="dateInput" type="date" required>
+          </div>
+          <div class="field">
+            <label for="timeInput"><span data-i18n="timeLabel">Time</span> <span class="opt" data-i18n="optionalHint">(optional)</span></label>
+            <input id="timeInput" type="time">
+          </div>
+        </div>
+        <p class="error" id="dateError" hidden data-i18n="errNoDate">Please pick a date.</p>
+        <label class="check">
+          <input type="checkbox" id="yearlyInput">
+          <span data-i18n="yearlyLabel">Repeat yearly (birthdays, Christmas…)</span>
+        </label>
+
+        <fieldset class="themes">
+          <legend data-i18n="themeLabel">Mood</legend>
+          <div class="theme-grid" id="themeGrid"></div>
+        </fieldset>
+      </form>
+
+      <div class="share-box">
+        <h3 data-i18n="shareHeading">Share</h3>
+        <div class="link-row">
+          <input id="linkOut" type="text" readonly data-i18n-aria="linkLabel">
+          <button type="button" id="btnCopy" class="btn primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16h-9V7h9v14z" fill="currentColor"/></svg>
+            <span data-i18n="btnCopy">Copy link</span>
+          </button>
+        </div>
+        <div class="share-actions">
+          <button type="button" id="btnShare" class="btn" hidden>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M18 8a3 3 0 1 0-2.83-4H15a3 3 0 0 0 .04.49L8.9 7.56a3 3 0 1 0 0 8.88l6.15 3.07A3 3 0 1 0 18 16a3 3 0 0 0-2.15.91l-5.9-2.95a3 3 0 0 0 0-1.92l5.9-2.95A3 3 0 0 0 18 8z" fill="currentColor"/></svg>
+            <span data-i18n="btnShare">Share</span>
+          </button>
+          <button type="button" id="btnQr" class="btn" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-5 0h3v2h2v3h-2v-2h-3v-3zm3 5h2v3h-2v-3zm3 0h2v3h-2v-3z" fill="currentColor"/></svg>
+            <span data-i18n="btnQr">QR code</span>
+          </button>
+        </div>
+        <div class="qr-wrap" id="qrWrap" hidden>
+          <div class="qr-box" id="qrBox" role="img" data-i18n-aria="btnQr"></div>
+          <p class="qr-hint" data-i18n="qrHint">Scan to open the countdown</p>
+        </div>
+        <p class="privacy-note">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z" fill="currentColor"/></svg>
+          <span><span data-i18n="privacyNote">Title &amp; date live only in the link — nothing is sent to a server.</span>
+          <span data-i18n="offlineNote">Even works offline.</span></span>
+        </p>
+      </div>
+      <p class="toast" id="toast" role="status" hidden></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://github.com/Dennismit2n/bigday" rel="noopener">
+      <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" fill="currentColor"/></svg>
+      <span data-i18n="footerSource">Open source on GitHub</span>
+    </a>
+    <span class="sep">·</span>
+    <span data-i18n="footerTranslate">Some translations are machine-generated – corrections welcome!</span>
+    <span class="sep">·</span>
+    <span data-i18n="footerAnalytics">Anonymous visit counting.</span>
+  </footer>
+</div>
+
+<script src="./js/vendor/qrcode.js"></script>
+<script src="./js/vendor/qrcode_UTF8.js"></script>
+<script src="./js/i18n.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
