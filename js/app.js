@@ -137,7 +137,14 @@
     return 'since';
   }
 
-  // whole years first (calendar-accurate), remainder as d/h/m/s
+  function addDays(d, n) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n,
+      d.getHours(), d.getMinutes(), d.getSeconds(), 0);
+  }
+
+  // whole years first, then whole calendar days — both stepped via local dates, not
+  // fixed second counts, so a 23/25-hour DST transition day still counts as one day
+  // ("nights until") and matches how people count. Only h/m/s tick as real elapsed time.
   function breakdown(from, to) {
     var years = 0;
     var cursor = new Date(from.getTime());
@@ -146,11 +153,15 @@
       probe.setFullYear(probe.getFullYear() + 1);
       if (probe.getTime() <= to.getTime()) { cursor = probe; years++; } else { break; }
     }
+    var days = Math.max(0, Math.floor((to.getTime() - cursor.getTime()) / 86400000));
+    while (addDays(cursor, days).getTime() > to.getTime()) { days--; }
+    while (addDays(cursor, days + 1).getTime() <= to.getTime()) { days++; }
+    cursor = addDays(cursor, days);
     var secs = Math.max(0, Math.floor((to.getTime() - cursor.getTime()) / 1000));
     return {
       years: years,
-      days: Math.floor(secs / 86400),
-      hours: Math.floor(secs / 3600) % 24,
+      days: days,
+      hours: Math.floor(secs / 3600), // may read 24 across a fall-back day — honest duration
       minutes: Math.floor(secs / 60) % 60,
       seconds: secs % 60
     };
@@ -304,11 +315,11 @@
 
   /* ---------- share ---------- */
 
-  function toast(key) {
+  // the toast stays in the accessibility tree (never [hidden]) so role=status announces reliably
+  function toast(key, ms) {
     el.toast.textContent = i18n.t(key);
-    el.toast.hidden = false;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { el.toast.hidden = true; }, 2200);
+    toastTimer = setTimeout(function () { el.toast.textContent = ''; }, ms || 2200);
   }
 
   function copyLink() {
@@ -321,8 +332,8 @@
         el.linkOut.focus();
         el.linkOut.select();
         var ok = document.execCommand('copy');
-        toast(ok ? 'copied' : 'copyFailed');
-      } catch (e) { toast('copyFailed'); }
+        if (ok) { toast('copied'); } else { toast('copyFailed', 6000); }
+      } catch (e) { toast('copyFailed', 6000); }
     }
   }
 
@@ -371,11 +382,13 @@
   var fx = (function () {
     var canvas = el.fx;
     var ctx = canvas.getContext('2d');
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    var reduced = !!(motionQuery && motionQuery.matches);
     var W = 0, H = 0;
     var parts = [];
     var burstParts = [];
     var cfg = null;
+    var themeKey = null;
     var running = false;
     var lastTs = 0;
 
@@ -521,6 +534,7 @@
     }
 
     function setTheme(theme) {
+      themeKey = theme;
       cfg = CONFIGS[theme] || null;
       parts = [];
       ctx.clearRect(0, 0, W, H);
@@ -557,6 +571,20 @@
       if (!document.hidden) { ensureLoop(); }
     });
 
+    // countdown pages stay open for a long time — honor the preference if it flips mid-session
+    if (motionQuery && motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', function (e) {
+        reduced = e.matches;
+        if (reduced) {
+          parts = [];
+          burstParts = [];
+          ctx.clearRect(0, 0, W, H);
+        } else if (themeKey) {
+          setTheme(themeKey);
+        }
+      });
+    }
+
     return { setTheme: setTheme, burst: burst };
   })();
 
@@ -568,8 +596,10 @@
     if (d) {
       state.date = d;
       el.dateError.hidden = true;
+      el.dateInput.setAttribute('aria-invalid', 'false');
     } else {
       el.dateError.hidden = false;
+      el.dateInput.setAttribute('aria-invalid', 'true');
     }
     state.time = el.timeInput.value || '';
     state.yearly = el.yearlyInput.checked;
@@ -590,7 +620,8 @@
       applyStateToForm();
       renderStage();
       var editor = document.getElementById('editor');
-      editor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      editor.scrollIntoView({ behavior: noMotion ? 'auto' : 'smooth', block: 'start' });
       el.titleInput.focus({ preventScroll: true });
     });
 

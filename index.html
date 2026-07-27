@@ -62,7 +62,7 @@
       <div class="stage-inner">
         <p class="event-date" id="eventDate"></p>
         <h2 class="event-title" id="eventTitle"></h2>
-        <p class="celebrate-msg" id="celebrateMsg" hidden><span data-i18n="itsTime">It's time!</span> 🎉</p>
+        <p class="celebrate-msg" id="celebrateMsg" role="status" hidden><span data-i18n="itsTime">It's time!</span> 🎉</p>
         <div class="ticker" id="ticker" role="timer" aria-live="off">
           <div class="unit" id="unitYears" hidden>
             <span class="num" id="numYears">0</span>
@@ -102,14 +102,14 @@
         <div class="field-row">
           <div class="field">
             <label for="dateInput" data-i18n="dateLabel">Date</label>
-            <input id="dateInput" type="date" required>
+            <input id="dateInput" type="date" required aria-describedby="dateError">
           </div>
           <div class="field">
             <label for="timeInput"><span data-i18n="timeLabel">Time</span> <span class="opt" data-i18n="optionalHint">(optional)</span></label>
             <input id="timeInput" type="time">
           </div>
         </div>
-        <p class="error" id="dateError" hidden data-i18n="errNoDate">Please pick a date.</p>
+        <p class="error" id="dateError" role="alert" hidden data-i18n="errNoDate">Please pick a date.</p>
         <label class="check">
           <input type="checkbox" id="yearlyInput">
           <span data-i18n="yearlyLabel">Repeat yearly (birthdays, Christmas…)</span>
@@ -150,7 +150,7 @@
           <span data-i18n="offlineNote">Even works offline.</span></span>
         </p>
       </div>
-      <p class="toast" id="toast" role="status" hidden></p>
+      <p class="toast" id="toast" role="status"></p>
     </section>
   </main>
 
