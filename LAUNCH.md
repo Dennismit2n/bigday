@@ -34,7 +34,7 @@ gelesen, bevor jemand auf „mehr" tippen muss.
 > #countdown #urlaubsvorfreude #fernweh #hochzeit #geburtstag #ruhestand #kostenlosetools
 > #opensource #kleinetools #datenschutz
 
-(1 109 Zeichen von 2 200)
+(1 105 Zeichen von 2 200)
 
 ---
 
@@ -176,7 +176,7 @@ Datenschutz-Eigenschaft vorn, nicht die Funktion.
 >
 > #WebDevelopment #OpenSource #PrivacyByDesign #JavaScript #Accessibility
 
-(2 226 Zeichen von 3 000)
+(2 216 Zeichen von 3 000)
 
 ---
 
@@ -194,7 +194,7 @@ Beitrag drücken die Reichweite.
 >
 > Dieses Fragment schickt kein Browser an einen Server. Also gibt es nichts zu speichern. 🧵
 
-(262 Zeichen von 280)
+(260 Zeichen von 280)
 
 **Beitrag 2**
 
@@ -253,7 +253,7 @@ gehört sie dazu.
 > Quelloffen (MIT), 40 KB gepackt, 12 Sprachen.
 > 🔗 dennismit2n.github.io/bigday
 
-(457 Zeichen von 500)
+(451 Zeichen von 500)
 
 ---
 
@@ -267,7 +267,7 @@ gehört sie dazu.
 >
 > dennismit2n.github.io/bigday
 
-(268 Zeichen von 300)
+(262 Zeichen von 300)
 
 ---
 
@@ -314,7 +314,7 @@ ungefilterte Rückmeldungen bekommt man nur hier.
 >
 > Probiert's mal aus und sagt mir, wenn was blöd oder unverständlich ist.
 
-(361 Zeichen von 400)
+(357 Zeichen von 400)
 
 ---
 
@@ -370,7 +370,7 @@ Projekten eine Kennzeichnung, r/de mag Eigenwerbung meist gar nicht. Am ehesten 
 >
 > Über Rückmeldungen freue ich mich, besonders über die unbequemen.
 
-(2 000 Zeichen)
+(1 990 Zeichen)
 
 ---
 
@@ -422,7 +422,7 @@ zwischen 15 und 17 Uhr deutscher Zeit posten, dann ist in den USA Vormittag.
 > Code: github.com/Dennismit2n/bigday
 > Live: dennismit2n.github.io/bigday
 
-(1 758 Zeichen)
+(1 748 Zeichen)
 
 ---
 
@@ -469,7 +469,7 @@ verpufft.
 >
 > Happy to hear where the day-counting logic is still wrong.
 
-(1 605 Zeichen)
+(1 601 Zeichen)
 
 ---
 
@@ -496,7 +496,7 @@ Link in der Kanalinfo. Panel-Grafik: `Bilder\bigday\twitch-panel-320x300.png`.
 > Kostenlos, quelloffen (MIT), 12 Sprachen.
 > ➡️ dennismit2n.github.io/bigday
 
-(623 Zeichen)
+(619 Zeichen)
 
 **Kanal-Bio**
 
@@ -581,7 +581,7 @@ ohne erste Nutzer verbrennt den einen Versuch, den man hat.
 >
 > Happy to answer anything.
 
-(671 Zeichen)
+(669 Zeichen)
 
 ---
 
@@ -704,7 +704,7 @@ Windows — dort geht es um Windows, und bigday läuft im Browser.
 > Viele Grüße
 > Dennis
 
-(1 176 Zeichen)
+(1 174 Zeichen)
 
 ---
 
@@ -724,7 +724,7 @@ Zugang.
 > Reines HTML/CSS/JS, keine Abhängigkeiten, 40 KB gepackt, MIT.
 > dennismit2n.github.io/bigday
 
-(448 Zeichen von 500)
+(442 Zeichen von 500)
 
 ---
 
