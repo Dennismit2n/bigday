@@ -8,14 +8,14 @@ A pretty countdown to your big day — vacation, birthday, retirement, whatever 
 
 ## Features
 
-- 🎨 **9 curated moods** — Wanderlust, Confetti, Golden, Starry night, Blossom, Advent, Neon, Sunshine, Ink — each with its own hand-tuned palette and gentle ambient animation
+- 🎨 **9 curated moods** — Wanderlust, Confetti, Golden, Starry night, Blossom, Advent, Neon, Sunshine, Ink — each with its own hand-tuned palette. Eight carry a gentle ambient animation; Ink is deliberately still.
 - ⏱️ **Live ticker** — days, hours, minutes, seconds (plus years for far-away dates), ticking in real time
 - 🎉 **The big moment** — when the countdown hits zero, the page celebrates with confetti; afterwards it counts *up* ("3 days since the big day"), so old links stay alive
 - 🔁 **Yearly repeat** — birthdays and holidays roll over to next year automatically after the party day
 - 🔗 **Share as a link, QR code or via your phone's share sheet** — the recipient sees exactly the mood you picked
 - 🕰️ **Local time** — the target counts down in each viewer's own time zone; time of day is optional (defaults to midnight)
 - 🌍 **12 languages** — Deutsch, English, Español, Français, Italiano, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (auto-detected)
-- 📱 **Installable PWA** — put your countdown on the home screen; works fully offline
+- 📱 **Installable PWA** — put your countdown on the home screen; works offline after the first visit
 - 🔒 **Radically private** — title & date live in the URL *fragment* (`#…`), which browsers never send to any server
 
 ## Privacy

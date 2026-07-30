@@ -8,14 +8,14 @@ Der hübsche Countdown zum großen Tag — Urlaub, Geburtstag, Ruhestand, worauf
 
 ## Funktionen
 
-- 🎨 **9 kuratierte Stimmungen** — Fernweh, Konfetti, Golden, Sternenhimmel, Zart, Advent, Neon, Sonne, Tinte — jede mit handpolierter Palette und dezenter Hintergrund-Animation
+- 🎨 **9 kuratierte Stimmungen** — Fernweh, Konfetti, Golden, Sternenhimmel, Zart, Advent, Neon, Sonne, Tinte — jede mit handpolierter Palette. Acht davon tragen eine dezente Hintergrund-Animation, Tinte ist bewusst still.
 - ⏱️ **Live-Ticker** — Tage, Stunden, Minuten, Sekunden (bei fernen Zielen zusätzlich Jahre), sekundengenau
 - 🎉 **Der große Moment** — bei null feiert die Seite mit Konfetti; danach zählt sie *vorwärts* („seit 3 Tagen…"), alte Links bleiben also lebendig
 - 🔁 **Jährlich wiederholen** — Geburtstage und Feste springen nach dem Festtag automatisch aufs nächste Jahr
 - 🔗 **Teilen als Link, QR-Code oder über das Teilen-Menü des Handys** — wer den Link öffnet, sieht genau die gewählte Stimmung
 - 🕰️ **Lokale Zeit** — gezählt wird in der Zeitzone des Betrachters; die Uhrzeit ist optional (Standard: Mitternacht)
 - 🌍 **12 Sprachen** — Deutsch, English, Español, Français, Italiano, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (automatisch erkannt)
-- 📱 **Installierbare PWA** — Countdown auf den Homescreen legen; funktioniert komplett offline
+- 📱 **Installierbare PWA** — Countdown auf den Homescreen legen; funktioniert nach dem ersten Besuch auch offline
 - 🔒 **Radikal privat** — Titel & Datum stecken im URL-*Fragment* (`#…`), das Browser nie an einen Server senden
 
 ## Datenschutz
