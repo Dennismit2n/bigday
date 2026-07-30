@@ -51,4 +51,4 @@ Interface strings live in [js/i18n.js](js/i18n.js). Some translations are machin
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) for everything in this repository, with two exceptions, both stated in their file headers: `js/vendor/qrcode.js` and `js/vendor/qrcode_UTF8.js` are the QR generator by [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT), and `js/vendor/count.js` is GoatCounter's counter script (ISC). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.

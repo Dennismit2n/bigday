@@ -51,4 +51,4 @@ Die Oberflächentexte liegen in [js/i18n.js](js/i18n.js). Einige Übersetzungen 
 
 ## Lizenz
 
-[MIT](LICENSE)
+[MIT](LICENSE) für alles in diesem Repository, mit zwei Ausnahmen, beide im Kopf der jeweiligen Datei angegeben: `js/vendor/qrcode.js` und `js/vendor/qrcode_UTF8.js` sind der QR-Generator von [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT), und `js/vendor/count.js` ist das Zählskript von GoatCounter (ISC). „QR Code“ ist eine eingetragene Marke von DENSO WAVE INCORPORATED.
