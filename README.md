@@ -20,7 +20,7 @@ A pretty countdown to your big day — vacation, birthday, retirement, whatever 
 
 ## Privacy
 
-The whole app is a handful of static files. Everything you type is encoded into the part of the URL after `#` — the fragment — which your browser never transmits to any server, so your countdown's title and date stay between you and the people you share the link with. There is no server-side anything: turn on airplane mode and it still works.
+The whole app is a handful of static files. Everything you type is encoded into the part of the URL after `#` — the fragment — which your browser never transmits to any server, so your countdown's title and date never end up in any server log. The link itself, though, is plain unencrypted text: anyone who has it or gets it forwarded can read the title and date right in the address bar — and the messenger you send it through, your browser history and your bookmarks all store it, title included. There is no server-side anything: turn on airplane mode and it still works.
 
 *Analytics:* the app uses [GoatCounter](https://www.goatcounter.com) for anonymous, cookieless visit counting (disclosed in the footer). The script is vendored locally in `js/vendor/count.js`; the only external request is the count pixel — and it never includes the fragment, i.e. never your countdown data.
 
