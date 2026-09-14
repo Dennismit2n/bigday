@@ -14,7 +14,7 @@ A pretty countdown to your big day — vacation, birthday, retirement, whatever 
 - 🔁 **Yearly repeat** — birthdays and holidays roll over to next year automatically after the party day
 - 🔗 **Share as a link, QR code or via your phone's share sheet** — the recipient sees exactly the mood you picked
 - 🕰️ **Local time** — the target counts down in each viewer's own time zone; time of day is optional (defaults to midnight)
-- 🌍 **12 languages** — Deutsch, English, Español, Français, Italiano, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (auto-detected)
+- 🌍 **14 languages** — Deutsch, English, Español, Français, Italiano, Nederlands, Polski, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (auto-detected)
 - 📱 **Installable PWA** — put your countdown on the home screen; works offline after the first visit
 - 🔒 **Radically private** — title & date live in the URL *fragment* (`#…`), which browsers never send to any server
 

@@ -14,7 +14,7 @@ Der hübsche Countdown zum großen Tag — Urlaub, Geburtstag, Ruhestand, worauf
 - 🔁 **Jährlich wiederholen** — Geburtstage und Feste springen nach dem Festtag automatisch aufs nächste Jahr
 - 🔗 **Teilen als Link, QR-Code oder über das Teilen-Menü des Handys** — wer den Link öffnet, sieht genau die gewählte Stimmung
 - 🕰️ **Lokale Zeit** — gezählt wird in der Zeitzone des Betrachters; die Uhrzeit ist optional (Standard: Mitternacht)
-- 🌍 **12 Sprachen** — Deutsch, English, Español, Français, Italiano, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (automatisch erkannt)
+- 🌍 **14 Sprachen** — Deutsch, English, Español, Français, Italiano, Nederlands, Polski, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (automatisch erkannt)
 - 📱 **Installierbare PWA** — Countdown auf den Homescreen legen; funktioniert nach dem ersten Besuch auch offline
 - 🔒 **Radikal privat** — Titel & Datum stecken im URL-*Fragment* (`#…`), das Browser nie an einen Server senden
 
