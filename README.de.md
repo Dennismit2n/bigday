@@ -6,6 +6,8 @@
 
 Der hübsche Countdown zum großen Tag — Urlaub, Geburtstag, Ruhestand, worauf auch immer du dich freust. Datum, Titel und Stimmung wählen, Link teilen. Der komplette Countdown steckt im Link: kein Server, keine Datenbank, kein Konto.
 
+<img src="assets/screenshot-en.webp" alt="bigday in der Stimmung Neon: oben der laufende Zähler in Jahren, Tagen, Stunden, Minuten und Sekunden, darunter das Formular mit Titel, Datum, Uhrzeit, den neun Stimmungen und dem Link zum Teilen." width="420">
+
 ## Funktionen
 
 - 🎨 **9 kuratierte Stimmungen** — Fernweh, Konfetti, Golden, Sternenhimmel, Zart, Advent, Neon, Sonne, Tinte — jede mit handpolierter Palette. Acht davon tragen eine dezente Hintergrund-Animation, Tinte ist bewusst still.

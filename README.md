@@ -6,6 +6,8 @@
 
 A pretty countdown to your big day — vacation, birthday, retirement, whatever you're looking forward to. Pick a date, a title and a mood, and get a link you can share. The entire countdown lives in that link: no server, no database, no account.
 
+<img src="assets/screenshot-en.webp" alt="bigday in the Neon mood: the live counter in years, days, hours, minutes and seconds at the top, below it the form with title, date, time, the nine moods and the link to share." width="420">
+
 ## Features
 
 - 🎨 **9 curated moods** — Wanderlust, Confetti, Golden, Starry night, Blossom, Advent, Neon, Sunshine, Ink — each with its own hand-tuned palette. Eight carry a gentle ambient animation; Ink is deliberately still.
