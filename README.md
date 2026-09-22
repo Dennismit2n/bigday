@@ -4,7 +4,7 @@
 
 **➡️ Try it: [dennismit2n.github.io/bigday](https://dennismit2n.github.io/bigday/)** &nbsp;·&nbsp; 🇩🇪 [Deutsche Version dieser Seite](README.de.md)
 
-A pretty countdown to your big day — vacation, birthday, retirement, whatever you're looking forward to. Pick a date, a title and a mood, and get a link you can share. The entire countdown lives in that link: no server, no database, no account.
+A pretty countdown to your big day — vacation, birthday, retirement, whatever you’re looking forward to. Pick a date, a title and a mood, and get a link you can share. The entire countdown lives in that link: no server, no database, no account.
 
 <img src="assets/screenshot-en.webp" alt="bigday in the Neon mood: the live counter in years, days, hours, minutes and seconds at the top, below it the form with title, date, time, the nine moods and the link to share." width="420">
 
@@ -14,15 +14,15 @@ A pretty countdown to your big day — vacation, birthday, retirement, whatever 
 - ⏱️ **Live ticker** — days, hours, minutes, seconds (plus years for far-away dates), ticking in real time
 - 🎉 **The big moment** — when the countdown hits zero, the page celebrates with confetti; afterwards it counts *up* ("3 days since the big day"), so old links stay alive
 - 🔁 **Yearly repeat** — birthdays and holidays roll over to next year automatically after the party day
-- 🔗 **Share as a link, QR code or via your phone's share sheet** — the recipient sees exactly the mood you picked
-- 🕰️ **Local time** — the target counts down in each viewer's own time zone; time of day is optional (defaults to midnight)
+- 🔗 **Share as a link, QR code or via your phone’s share sheet** — the recipient sees exactly the mood you picked
+- 🕰️ **Local time** — the target counts down in each viewer’s own time zone; time of day is optional (defaults to midnight)
 - 🌍 **14 languages** — Deutsch, English, Español, Français, Italiano, Nederlands, Polski, Português, Türkçe, Русский, हिन्दी, 中文, 日本語, 한국어 (auto-detected)
 - 📱 **Installable PWA** — put your countdown on the home screen; works offline after the first visit
 - 🔒 **Radically private** — title & date live in the URL *fragment* (`#…`), which browsers never send to any server
 
 ## Privacy
 
-The whole app is a handful of static files. Everything you type is encoded into the part of the URL after `#` — the fragment — which your browser never transmits to any server, so your countdown's title and date never end up in any server log. The link itself, though, is plain unencrypted text: anyone who has it or gets it forwarded can read the title and date right in the address bar — and the messenger you send it through, your browser history and your bookmarks all store it, title included. There is no server-side anything: turn on airplane mode and it still works.
+The whole app is a handful of static files. Everything you type is encoded into the part of the URL after `#` — the fragment — which your browser never transmits to any server, so your countdown’s title and date never end up in any server log. The link itself, though, is plain unencrypted text: anyone who has it or gets it forwarded can read the title and date right in the address bar — and the messenger you send it through, your browser history and your bookmarks all store it, title included. There is no server-side anything: turn on airplane mode and it still works.
 
 *Analytics:* the app uses [GoatCounter](https://www.goatcounter.com) for anonymous, cookieless visit counting (disclosed in the footer). The script is vendored locally in `js/vendor/count.js`; the only external request is the count pixel — and it never includes the fragment, i.e. never your countdown data.
 
@@ -41,7 +41,7 @@ node tools/dev-server.js
 
 Then open http://localhost:8616. Edit, reload, done.
 
-**When deploying:** bump the `CACHE` constant in [sw.js](sw.js) so installed clients pick up the new version immediately. (The service worker also refreshes cached assets in the background — stale-while-revalidate — so even a forgotten bump heals itself on the visitor's next visit.)
+**When deploying:** bump the `CACHE` constant in [sw.js](sw.js) so installed clients pick up the new version immediately. (The service worker also refreshes cached assets in the background — stale-while-revalidate — so even a forgotten bump heals itself on the visitor’s next visit.)
 
 ## Translations
 
@@ -53,4 +53,4 @@ Interface strings live in [js/i18n.js](js/i18n.js). Some translations are machin
 
 ## License
 
-[MIT](LICENSE) for everything in this repository, with two exceptions, both stated in their file headers: `js/vendor/qrcode.js` and `js/vendor/qrcode_UTF8.js` are the QR generator by [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT), and `js/vendor/count.js` is GoatCounter's counter script (ISC). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+[MIT](LICENSE) for everything in this repository, with two exceptions, both stated in their file headers: `js/vendor/qrcode.js` and `js/vendor/qrcode_UTF8.js` are the QR generator by [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT), and `js/vendor/count.js` is GoatCounter’s counter script (ISC). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
