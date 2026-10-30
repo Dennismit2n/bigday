@@ -273,7 +273,8 @@ main { display: flex; flex-direction: column; flex: 1; }
   color: var(--ink-soft);
 }
 
-.lang-wrap select {
+.lang-wrap select,
+.install-btn {
   font: inherit;
   font-size: 0.9rem;
   padding: 0.35rem 0.5rem;
@@ -281,6 +282,23 @@ main { display: flex; flex-direction: column; flex: 1; }
   border: 1px solid var(--field-border);
   background: var(--panel);
   color: var(--panel-ink);
+}
+
+/* Install button: looks like the selects next to it, hidden until the browser offers
+   installation (see app.js). On phones it gets a full row of its own. */
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.install-btn[hidden] { display: none; }
+.install-btn svg { flex: none; }
+@media (max-width: 560px) {
+  .install-btn { flex: 1 1 100%; }
 }
 
 /* ---------- stage ---------- */
@@ -460,7 +478,8 @@ body[data-mode="view"] .stage { min-height: calc(100dvh - 6rem); }
 .btn:focus-visible,
 .cta:focus-visible,
 .theme-swatch:focus-visible,
-.lang-wrap select:focus-visible {
+.lang-wrap select:focus-visible,
+.install-btn:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }

@@ -8,6 +8,8 @@
 var I18N = {
   de: {
     _name: 'Deutsch',
+    installBtn: 'Installieren',
+    installDone: 'Als App installiert.',
     appName: 'bigday',
     tagline: 'Der hübsche Countdown zum großen Tag – zum Teilen als Link.',
     langLabel: 'Sprache',
@@ -55,6 +57,8 @@ var I18N = {
   },
   en: {
     _name: 'English',
+    installBtn: 'Install',
+    installDone: 'Installed as an app.',
     appName: 'bigday',
     tagline: 'A pretty countdown to your big day — shareable as a link.',
     langLabel: 'Language',
@@ -102,6 +106,8 @@ var I18N = {
   },
   es: {
     _name: 'Español',
+    installBtn: 'Instalar',
+    installDone: 'Instalación completada.',
     appName: 'bigday',
     tagline: 'Una cuenta atrás preciosa para tu gran día: se comparte como enlace.',
     langLabel: 'Idioma',
@@ -149,6 +155,8 @@ var I18N = {
   },
   fr: {
     _name: 'Français',
+    installBtn: 'Installer',
+    installDone: 'Installation terminée.',
     appName: 'bigday',
     tagline: "Un joli compte à rebours jusqu’à votre grand jour, à partager d’un simple lien.",
     langLabel: 'Langue',
@@ -196,6 +204,8 @@ var I18N = {
   },
   it: {
     _name: 'Italiano',
+    installBtn: 'Installa',
+    installDone: 'Installazione completata.',
     appName: 'bigday',
     tagline: 'Un bel conto alla rovescia verso il tuo grande giorno, da condividere come link.',
     langLabel: 'Lingua',
@@ -243,6 +253,8 @@ var I18N = {
   },
   nl: {
     _name: 'Nederlands',
+    installBtn: 'Installeren',
+    installDone: 'Als app geïnstalleerd.',
     appName: 'bigday',
     tagline: 'Een mooie aftelklok naar je grote dag — te delen als link.',
     langLabel: 'Taal',
@@ -290,6 +302,8 @@ var I18N = {
   },
   pl: {
     _name: 'Polski',
+    installBtn: 'Zainstaluj',
+    installDone: 'Zainstalowano jako aplikację.',
     appName: 'bigday',
     tagline: 'Ładne odliczanie do Twojego wielkiego dnia – do udostępnienia linkiem.',
     langLabel: 'Język',
@@ -337,6 +351,8 @@ var I18N = {
   },
   pt: {
     _name: 'Português',
+    installBtn: 'Instalar',
+    installDone: 'Instalação concluída.',
     appName: 'bigday',
     tagline: 'Uma contagem regressiva bonita até o seu grande dia — para compartilhar como link.',
     langLabel: 'Idioma',
@@ -384,6 +400,8 @@ var I18N = {
   },
   tr: {
     _name: 'Türkçe',
+    installBtn: 'Yükle',
+    installDone: 'Uygulama olarak yüklendi.',
     appName: 'bigday',
     tagline: 'Büyük gününe şık bir geri sayım — bağlantı olarak paylaşabilirsin.',
     langLabel: 'Dil',
@@ -431,6 +449,8 @@ var I18N = {
   },
   ru: {
     _name: 'Русский',
+    installBtn: 'Установить',
+    installDone: 'Установлено как приложение.',
     appName: 'bigday',
     tagline: 'Красивый обратный отсчёт до важного дня — им можно поделиться одной ссылкой.',
     langLabel: 'Язык',
@@ -478,6 +498,8 @@ var I18N = {
   },
   hi: {
     _name: 'हिन्दी',
+    installBtn: 'इंस्टॉल करें',
+    installDone: 'ऐप के रूप में इंस्टॉल हो गया।',
     appName: 'bigday',
     tagline: 'आपके बड़े दिन तक की खूबसूरत उलटी गिनती — लिंक से साझा करें।',
     langLabel: 'भाषा',
@@ -525,6 +547,8 @@ var I18N = {
   },
   zh: {
     _name: '中文',
+    installBtn: '安装',
+    installDone: '已作为应用安装。',
     appName: 'bigday',
     tagline: '为你的大日子做一个漂亮的倒计时——一条链接即可分享。',
     langLabel: '语言',
@@ -572,6 +596,8 @@ var I18N = {
   },
   ja: {
     _name: '日本語',
+    installBtn: 'インストール',
+    installDone: 'アプリとしてインストールしました。',
     appName: 'bigday',
     tagline: '大切な日までのきれいなカウントダウン。リンクひとつでシェアできます。',
     langLabel: '言語',
@@ -619,6 +645,8 @@ var I18N = {
   },
   ko: {
     _name: '한국어',
+    installBtn: '설치',
+    installDone: '앱으로 설치되었습니다.',
     appName: 'bigday',
     tagline: '소중한 날까지의 예쁜 카운트다운 — 링크 하나로 공유하세요.',
     langLabel: '언어',

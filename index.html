@@ -33,6 +33,9 @@
        The title is pinned to a static value so the personalized document.title
        (the user's event name) never reaches the count pixel. -->
   <script data-goatcounter="https://dennis-mit-2n.goatcounter.com/count" data-goatcounter-settings='{"title": "bigday"}' async src="./js/vendor/count.js"></script>
+  <!-- Install button: Chrome, Edge and Samsung Internet may announce installability before
+       app.js runs, so the event is kept here until the button picks it up (see app.js). -->
+  <script>window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.deferredInstall=e;if(window.onInstallReady)window.onInstallReady();});</script>
 </head>
 <body data-theme="wanderlust" data-mode="edit">
 
@@ -60,6 +63,7 @@
         <p class="tagline" data-i18n="tagline">A pretty countdown to your big day — shareable as a link.</p>
       </div>
     </div>
+    <button type="button" id="installBtn" class="install-btn" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="installBtn">Install</span></button>
     <label class="lang-wrap">
       <span class="visually-hidden" data-i18n="langLabel">Language</span>
       <select id="langSelect" data-i18n-aria="langLabel"></select>
