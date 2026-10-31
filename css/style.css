@@ -657,3 +657,69 @@ body[data-mode="view"] .stage { min-height: calc(100dvh - 6rem); }
   .stage-inner, .celebrate-msg { animation: none; }
   .btn, .cta, .btn:hover, .cta:hover { transition: none; transform: none; }
 }
+
+/* ---------- display aids of the workshop (31.10.2026) ----------
+   High contrast, colour-blind and inverted colours, one choice for every tool on
+   this origin (werkstatt.darstellung, see app.js). bigday has no light/dark: the
+   nine moods belong to the countdown. High contrast REPLACES the mood (otherwise
+   it would not be high contrast), on black or white per data-hc; colour-blind
+   only swaps the error colour; inverted colours flips everything like the colour
+   filter of Windows. The mood blocks above stay untouched. */
+
+:root[data-vision="contrast"][data-hc="dark"] body {
+  --bg: #000000;
+  --stage-glow: none;
+  --ink: #E0E0E0;          /* 15.91:1 */
+  --ink-soft: #C4C4C4;     /* 12.04 */
+  --tile-bg: #000000;
+  --tile-border: #A0A0A0;
+  --tile-ink: #E0E0E0;
+  --accent: #FFD54F;       /* 14.4 */
+  --accent-ink: #000000;
+  --panel: #000000;
+  --panel-ink: #E0E0E0;
+  --panel-soft: #C4C4C4;
+  --field-bg: #000000;
+  --field-border: #A0A0A0;
+  --title-glow: none;
+  --num-glow: none;
+  --error: #FF8A80;        /* 9.4 */
+}
+:root[data-vision="contrast"][data-hc="light"] body {
+  --bg: #FFFFFF;
+  --stage-glow: none;
+  --ink: #000000;
+  --ink-soft: #2B2B2B;     /* 14.16 */
+  --tile-bg: #FFFFFF;
+  --tile-border: #585757;  /* 7.20 */
+  --tile-ink: #000000;
+  --accent: #5249AA;       /* 7.26, white on it too */
+  --accent-ink: #FFFFFF;
+  --panel: #FFFFFF;
+  --panel-ink: #000000;
+  --panel-soft: #2B2B2B;
+  --field-bg: #FFFFFF;
+  --field-border: #585757;
+  --title-glow: none;
+  --num-glow: none;
+  --error: #B2000F;        /* 7.24 */
+}
+:root[data-vision="contrast"][data-hc="dark"] .field input { color-scheme: dark; }
+:root[data-vision="contrast"][data-hc="light"] .field input { color-scheme: light; }
+:root[data-vision="contrast"] #fx { display: none; }
+:root[data-vision="contrast"] .sep { opacity: 1; }
+:root[data-vision="contrast"] :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Colour-blind: the error text in Okabe-Ito vermillion instead of red, lighter
+   on the dark moods, darker on the light ones (confetti, blossom, sun, ink) */
+:root[data-vision="cvd"] body { --error: #974100; }
+:root[data-vision="cvd"] body:is([data-theme="wanderlust"], [data-theme="gold"], [data-theme="stars"], [data-theme="advent"], [data-theme="neon"]) { --error: #FFA466; }
+
+/* Inverted colours like the colour filter of Windows; the QR code to share the
+   countdown is flipped back and stays true (data-echt). Printing never flips. */
+:root[data-vision="invert"] { filter: invert(1); }
+:root[data-vision="invert"] :is(img:not([src*=".svg"]), video, [data-echt]):not([data-echt] *) { filter: invert(1); }
+@media print {
+  :root[data-vision="invert"],
+  :root[data-vision="invert"] :is(img:not([src*=".svg"]), video, [data-echt]):not([data-echt] *) { filter: none; }
+}

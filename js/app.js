@@ -33,7 +33,7 @@
     dateError: $('dateError'), yearlyInput: $('yearlyInput'), themeGrid: $('themeGrid'),
     linkOut: $('linkOut'), btnCopy: $('btnCopy'), btnShare: $('btnShare'),
     btnQr: $('btnQr'), qrWrap: $('qrWrap'), qrBox: $('qrBox'), toast: $('toast'),
-    langSelect: $('langSelect'), themeColorMeta: $('themeColorMeta')
+    langSelect: $('langSelect'), themeSelect: $('themeSelect'), themeColorMeta: $('themeColorMeta')
   };
 
   /* ---------- state ---------- */
@@ -661,6 +661,83 @@
     });
   }
 
+  /* ---------- display aids of the workshop (31.10.2026) ----------
+     One choice for every tool on this origin, stored as plain text under
+     werkstatt.darstellung. bigday has no light/dark of its own (the nine themes
+     belong to the countdown), so its dropdown offers five entries: Normal, high
+     contrast dark/light, colour-blind and inverted colours. Choosing "Normal"
+     keeps a light/dark choice made in another tool. data-vision carries the aid,
+     data-hc the base of high contrast; the head snippet in index.html resolves
+     the same way. */
+
+  var SHARED_KEY = 'werkstatt.darstellung';
+  var VISION_OPTIONS = [['normal', 'themeNormal'], ['hc-dark', 'themeHcDark'], ['hc-light', 'themeHcLight'],
+    ['cvd', 'themeCvd'], ['invert', 'themeInvert']];
+
+  function media(q) { return !!(window.matchMedia && window.matchMedia(q).matches); }
+
+  function storedChoice() {
+    try { return localStorage.getItem(SHARED_KEY) || 'system'; } catch (e) { return 'system'; }
+  }
+
+  function choiceToOption(v) {
+    if (v === 'hc-dark' || v === 'hc-light' || v === 'invert') { return v; }
+    if (v === 'cvd-dark' || v === 'cvd-light') { return 'cvd'; }
+    return 'normal';
+  }
+
+  function applyVision(v) {
+    var root = document.documentElement;
+    root.removeAttribute('data-vision');
+    root.removeAttribute('data-hc');
+    if (v === 'hc-dark' || v === 'hc-light') {
+      root.setAttribute('data-vision', 'contrast');
+      root.setAttribute('data-hc', v.slice(3));
+    } else if (v === 'cvd-dark' || v === 'cvd-light') {
+      root.setAttribute('data-vision', 'cvd');
+    } else if (v === 'invert') {
+      root.setAttribute('data-vision', 'invert');
+    } else if (v === 'system' && media('(prefers-contrast: more)')) {
+      root.setAttribute('data-vision', 'contrast');
+      root.setAttribute('data-hc', media('(prefers-color-scheme: dark)') ? 'dark' : 'light');
+    }
+  }
+
+  function populateThemeSelect() {
+    for (var i = 0; i < VISION_OPTIONS.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = VISION_OPTIONS[i][0];
+      opt.setAttribute('data-i18n', VISION_OPTIONS[i][1]);
+      el.themeSelect.appendChild(opt);
+    }
+    el.themeSelect.value = choiceToOption(storedChoice());
+
+    el.themeSelect.addEventListener('change', function () {
+      var picked = el.themeSelect.value;
+      var current = storedChoice();
+      var next = picked;
+      if (picked === 'normal') {
+        next = choiceToOption(current) === 'normal' ? current : 'system';
+      } else if (picked === 'cvd') {
+        next = choiceToOption(current) === 'cvd' ? current : (media('(prefers-color-scheme: dark)') ? 'cvd-dark' : 'cvd-light');
+      }
+      try { localStorage.setItem(SHARED_KEY, next); } catch (e) { /* storage blocked: only for this visit */ }
+      applyVision(next);
+    });
+
+    // "System" follows the device live, also for "increase contrast"
+    ['(prefers-color-scheme: dark)', '(prefers-contrast: more)'].forEach(function (q) {
+      if (!window.matchMedia) { return; }
+      var list = window.matchMedia(q);
+      var follow = function () { applyVision(storedChoice()); };
+      if (list.addEventListener) { list.addEventListener('change', follow); } else if (list.addListener) { list.addListener(follow); }
+    });
+    // a choice made in another tool's tab, or before coming back here
+    function again() { var v = storedChoice(); applyVision(v); el.themeSelect.value = choiceToOption(v); }
+    window.addEventListener('storage', function (e) { if (e.key === SHARED_KEY) { again(); } });
+    window.addEventListener('pageshow', function (e) { if (e.persisted) { again(); } });
+  }
+
   function populateLangSelect() {
     var codes = Object.keys(I18N);
     for (var i = 0; i < codes.length; i++) {
@@ -715,6 +792,8 @@
       setMode('edit');
     }
 
+    // the appearance dropdown gets its options before the first translation pass
+    populateThemeSelect();
     i18n.apply(i18n.detect());
     populateLangSelect();
     initEvents();
