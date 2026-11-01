@@ -1,7 +1,7 @@
 {
-  "name": "bigday — countdown to your big day",
+  "name": "bigday · countdown to your big day",
   "short_name": "bigday",
-  "description": "A pretty countdown to vacation, birthday, retirement — shareable as a link. No server, no account.",
+  "description": "A pretty countdown to vacation, birthday or retirement, shareable as a link. No server, no account.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
