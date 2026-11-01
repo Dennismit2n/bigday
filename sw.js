@@ -1,7 +1,7 @@
 /* bigday service worker — bump CACHE on every deploy so clients update cleanly */
 'use strict';
 
-var CACHE = 'bigday-v8';
+var CACHE = 'bigday-v9';
 var ASSETS = [
   './',
   './index.html',

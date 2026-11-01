@@ -202,7 +202,7 @@
     if (mode === 'view') {
       document.title = (title ? title + ' · ' : '') + 'bigday';
     } else {
-      document.title = 'bigday — ' + i18n.t('tagline');
+      document.title = 'bigday · ' + i18n.t('tagline');
     }
     tick(true);
   }
