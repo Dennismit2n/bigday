@@ -1,7 +1,7 @@
 /* bigday service worker — bump CACHE on every deploy so clients update cleanly */
 'use strict';
 
-var CACHE = 'bigday-v10';
+var CACHE = 'bigday-v11';
 var ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,6 @@ var ASSETS = [
   './js/i18n.js',
   './js/vendor/qrcode.js',
   './js/vendor/qrcode_UTF8.js',
-  './js/vendor/count.js',
   './manifest.webmanifest',
   './icons/favicon.svg',
   './icons/favicon-32.png',

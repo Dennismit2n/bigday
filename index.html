@@ -33,12 +33,6 @@
        Hoher Kontrast, Farbenblind und Umkehr, data-hc den Grundton des Hohen Kontrasts. Dieselbe
        Auflösung steht in js/app.js (applyVision). -->
   <script>(function(){var v=null,r=document.documentElement,m=window.matchMedia;try{v=localStorage.getItem('werkstatt.darstellung');}catch(e){}var d=!!(m&&m('(prefers-color-scheme: dark)').matches),k=!!(m&&m('(prefers-contrast: more)').matches);if(v==='hc-dark'||v==='hc-light'){r.setAttribute('data-vision','contrast');r.setAttribute('data-hc',v.slice(3));}else if(v==='cvd-dark'||v==='cvd-light'){r.setAttribute('data-vision','cvd');}else if(v==='invert'){r.setAttribute('data-vision','invert');}else if(k&&(!v||v==='system')){r.setAttribute('data-vision','contrast');r.setAttribute('data-hc',d?'dark':'light');}})();</script>
-  <!-- Analytics: GoatCounter (anonymous, cookieless — disclosed in the footer).
-       count.js is vendored locally; the only external request is the count pixel.
-       Countdown data lives in the #hash, which is never sent to any server.
-       The title is pinned to a static value so the personalized document.title
-       (the user's event name) never reaches the count pixel. -->
-  <script data-goatcounter="https://dennis-mit-2n.goatcounter.com/count" data-goatcounter-settings='{"title": "bigday"}' async src="./js/vendor/count.js"></script>
   <!-- Install button: Chrome, Edge and Samsung Internet may announce installability before
        app.js runs, so the event is kept here until the button picks it up (see app.js). -->
   <script>window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.deferredInstall=e;if(window.onInstallReady)window.onInstallReady();});</script>
@@ -184,8 +178,6 @@
     </a>
     <span class="sep">·</span>
     <span data-i18n="footerTranslate">Some translations are machine-made, and I’m happy to take corrections.</span>
-    <span class="sep">·</span>
-    <span data-i18n="footerAnalytics">Anonymous visit counting.</span>
     <span class="sep">·</span>
     <span class="footer-copyright">© 2026 Dennis_mit_2n</span>
   </footer>

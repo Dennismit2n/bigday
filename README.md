@@ -24,8 +24,6 @@ A pretty countdown to your big day — vacation, birthday, retirement, whatever 
 
 The whole app is a handful of static files. Everything you type is encoded into the part of the URL after `#` — the fragment — which your browser never transmits to any server, so your countdown’s title and date never end up in any server log. The link itself, though, is plain unencrypted text: anyone who has it or gets it forwarded can read the title and date right in the address bar — and the messenger you send it through, your browser history and your bookmarks all store it, title included. There is no server-side anything: turn on airplane mode and it still works.
 
-*Analytics:* the app uses [GoatCounter](https://www.goatcounter.com) for anonymous, cookieless visit counting (disclosed in the footer). The script is vendored locally in `js/vendor/count.js`; the only external request is the count pixel — and it never includes the fragment, i.e. never your countdown data.
-
 ## Nice to know
 
 - A date in the past simply counts **up** — "10 years married" works out of the box.
@@ -53,4 +51,4 @@ Interface strings live in [js/i18n.js](js/i18n.js). Some translations are machin
 
 ## License
 
-[MIT](LICENSE) for everything in this repository, with two exceptions, both stated in their file headers: `js/vendor/qrcode.js` and `js/vendor/qrcode_UTF8.js` are the QR generator by [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT), and `js/vendor/count.js` is GoatCounter’s counter script (ISC). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+[MIT](LICENSE) for everything in this repository, with one exception, stated in its file headers: `js/vendor/qrcode.js` and `js/vendor/qrcode_UTF8.js` are the QR generator by [Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator) (MIT). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
