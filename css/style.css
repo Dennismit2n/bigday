@@ -811,4 +811,7 @@ body[data-mode="view"] .stage { min-height: calc(100dvh - 6rem); }
 .btn.primary { background: var(--beschlag), var(--accent); }
 /* Hoher Kontrast kennt keine Schatten, der Beschlag bleibt. Gedruckt wird ohne beides. */
 :root[data-vision="contrast"] :is(.lang-wrap select, .install-btn, .unit, .panel, .btn) { box-shadow: none; }
+@media print {
+  .lang-wrap select, .install-btn, .unit, .panel, .field input, .link-row input, .btn { background-image: none !important; box-shadow: none !important; }
+}
 /* Ende Beschlag */
