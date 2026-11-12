@@ -763,7 +763,7 @@ body[data-mode="view"] .stage { min-height: calc(100dvh - 6rem); }
 }
 .lang-wrap select,
 .install-btn {
-  --bsl-i: 2px;
+  --bsl-i: 3px;
   --bsl-g: 4px;
   --bsl-a: 0.5px;
   background: var(--beschlag), var(--panel);
@@ -814,5 +814,11 @@ body[data-mode="view"] .stage { min-height: calc(100dvh - 6rem); }
 :root[data-vision="contrast"] :is(.lang-wrap select, .install-btn, .unit, .panel, .btn) { box-shadow: none; }
 @media print {
   .lang-wrap select, .install-btn, .unit, .panel, .field input, .link-row input, .btn { background-image: none !important; box-shadow: none !important; }
+}
+/* Am Handy sind die Zählerkacheln schmal: kleinerer Beschlag und engere Beschriftung,
+   damit keine Schraube ein Wort berührt. */
+@media (max-width: 560px) {
+  .unit { --bsl-i: 5px; --bsl-g: 4px; --bsl-a: 0px; min-width: 4.6rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+  .lbl { font-size: 0.62rem; letter-spacing: 0.05em; }
 }
 /* Ende Beschlag */
